@@ -14,13 +14,13 @@ public class Pedido {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //ID deve ser incrementado pelo banco de dados
-	private Long idPedido;
+	private Long id_pedido;
 	@Column(nullable = false) //não permite que sejam deixados como nulo
-	private Long idCliente;
+	private Long id_cliente;
 	@Column(nullable = false)
-	private Long idProdutos;
+	private Long id_produto;
 	@Column(nullable = false)
-	private float valorTotal;
+	private float valor_total;
 	@Column(nullable = false)
 	private String endereco;
 	
