@@ -15,7 +15,7 @@ public class Cliente {
 	@Column(name = "clienteId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //ID deve ser incrementado pelo banco de dados
 	private Long id_cliente;
-	@Column(name = "nome")
+	@Column(name = "nome",nullable = false)
 	private String nome;
 	
 	//Getters e Setters

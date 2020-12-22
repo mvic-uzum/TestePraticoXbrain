@@ -30,7 +30,7 @@ public class ProdutoController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Produto cadastrarProduto(@RequestBody Produto produto){
-		return (produtoRepository.save(produto));
+		return produtoRepository.save(produto);
 	}
 	
 }

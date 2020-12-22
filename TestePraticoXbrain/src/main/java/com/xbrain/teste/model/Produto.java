@@ -12,11 +12,12 @@ import javax.persistence.Table;
 public class Produto {
 
 	@Id
+	@Column(name = "produtoId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //ID deve ser incrementado pelo banco de dados
 	private Long id_produto;
-	@Column(nullable = false)
+	@Column(name = "tipoItem",nullable = false)
 	private String tipo_item;
-	@Column(nullable = false)
+	@Column(name = "valor",nullable = false)
 	private float valor;
 	
 	//Getters e Setters

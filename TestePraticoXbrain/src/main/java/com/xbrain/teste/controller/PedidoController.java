@@ -30,7 +30,7 @@ public class PedidoController{
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Pedido realizarPedido(@RequestBody Pedido pedido){
-		return (pedidoRepository.save(pedido));
+		return pedidoRepository.save(pedido);
 	}
 		
 }
