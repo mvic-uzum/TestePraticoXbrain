@@ -16,6 +16,8 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //ID deve ser incrementado pelo banco de dados
 	private Long id_produto;
 	@Column(nullable = false)
+	private String tipo_item;
+	@Column(nullable = false)
 	private float valor;
 	
 }
