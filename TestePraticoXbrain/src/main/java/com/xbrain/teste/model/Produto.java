@@ -1,10 +1,13 @@
 package com.xbrain.teste.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity //Para que haja uma tabela Produto no banco de dados
@@ -19,8 +22,11 @@ public class Produto {
 	private String tipo_item;
 	@Column(name = "valor",nullable = false)
 	private float valor;
+	@OneToMany //Relacionamento com a entidade "Pedido"
+	@Column(name = "pedidosInclusos",nullable = false)
+	private List<Pedido> id_pedidos;
 	
-	//Getters e Setters
+	//Getters e Setters	
 	public Long getId_produto() {
 		return id_produto;
 	}
@@ -38,6 +44,12 @@ public class Produto {
 	}
 	public void setValor(float valor) {
 		this.valor = valor;
+	}
+	public List<Pedido> getId_pedidos() {
+		return id_pedidos;
+	}
+	public void setId_pedidos(List<Pedido> id_pedidos) {
+		this.id_pedidos = id_pedidos;
 	}
 	
 	@Override
