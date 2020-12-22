@@ -19,11 +19,6 @@ public class Cliente {
 	private String nome;
 	
 	//Getters e Setters
-	public Cliente(Long id_cliente, String nome) {
-		this.id_cliente = id_cliente;
-		this.nome = nome;
-	}
-	
 	public Long getId_cliente() {
 		return id_cliente;
 	}
