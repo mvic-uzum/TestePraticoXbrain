@@ -12,15 +12,16 @@ import javax.persistence.Table;
 public class Pedido {
 	
 	@Id
+	@Column(name = "pedidoId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //ID deve ser incrementado pelo banco de dados
 	private Long id_pedido;
-	@Column(nullable = false) //não permite que sejam deixados como nulo
+	@Column(name = "clienteId",nullable = false) //não permite que sejam deixados como nulo
 	private Long id_cliente;
-	@Column(nullable = false)
+	@Column(name = "produtoId",nullable = false)
 	private Long id_produto;
-	@Column(nullable = false)
+	@Column(name = "valorTotal",nullable = false)
 	private float valor_total;
-	@Column(nullable = false)
+	@Column(name = "endereco",nullable = false)
 	private String endereco;
 	
 	//Getters e Setters

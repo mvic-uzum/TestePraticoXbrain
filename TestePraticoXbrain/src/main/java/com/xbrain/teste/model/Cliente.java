@@ -17,6 +17,8 @@ public class Cliente {
 	private Long id_cliente;
 	@Column(name = "nome",nullable = false)
 	private String nome;
+	@Column(name = "endereco",nullable = false)
+	private String endereco;
 	
 	//Getters e Setters
 	public Long getId_cliente() {
@@ -33,6 +35,14 @@ public class Cliente {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	@Override
