@@ -30,6 +30,15 @@ public class Pedido {
 	private float valor_total;
 	@Column(name = "endereco",nullable = false)
 	private String endereco;
+	
+	//Calcula o valor total do pedido
+	public float somaTotal(){
+		for(int i=0; i<id_produtos.size(); i++){
+			Produto produto = id_produtos.get(i);
+			valor_total += produto.getValor();
+		}
+		return valor_total;
+	}
 
 	//Getters e Setters
 	public Long getId_pedido() {
