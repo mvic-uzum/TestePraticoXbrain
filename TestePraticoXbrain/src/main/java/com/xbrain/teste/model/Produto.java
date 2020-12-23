@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity //Para que haja uma tabela Produto no banco de dados
@@ -22,8 +23,8 @@ public class Produto {
 	private String tipo_item;
 	@Column(name = "valor",nullable = false)
 	private float valor;
-	@OneToMany //Relacionamento com a entidade "Pedido"
-	@Column(name = "pedidosInclusos",nullable = false)
+	@ManyToMany //Relacionamento com a entidade "Pedido"
+	@JoinColumn(name = "pedidosInclusos",nullable = false) //FK
 	private List<Pedido> id_pedidos;
 	
 	//Getters e Setters	

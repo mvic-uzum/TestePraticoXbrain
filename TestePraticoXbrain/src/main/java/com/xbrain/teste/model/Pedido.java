@@ -7,9 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity //Para que haja uma tabela Pedido no banco de dados
 @Table(name = "Pedido")
@@ -19,11 +20,11 @@ public class Pedido {
 	@Column(name = "pedidoId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //ID deve ser incrementado pelo banco de dados
 	private Long id_pedido;
-	@OneToOne //Relacionamento com a entidade "Cliente"
-	@Column(name = "clienteId",nullable = false) //não permite que sejam deixados como nulo
-	private Long id_cliente;
-	@OneToMany //Relacionamento com a entidade "Produto"
-	@Column(name = "produtosId",nullable = false)
+	@ManyToOne //Relacionamento com a entidade "Cliente"
+	@JoinColumn(name = "clienteId",nullable = false) //não permite que sejam deixados como nulo
+	private Cliente id_cliente;
+	@ManyToMany //Relacionamento com a entidade "Produto"
+	@JoinColumn(name = "produtosId",nullable = false) //FK
 	private List<Produto> id_produtos;
 	@Column(name = "valorTotal",nullable = false)
 	private float valor_total;
@@ -37,10 +38,10 @@ public class Pedido {
 	public void setId_pedido(Long id_pedido) {
 		this.id_pedido = id_pedido;
 	}
-	public Long getId_cliente() {
+	public Cliente getId_cliente() {
 		return id_cliente;
 	}
-	public void setId_cliente(Long id_cliente) {
+	public void setId_cliente(Cliente id_cliente) {
 		this.id_cliente = id_cliente;
 	}
 	public List<Produto> getId_produtos() {

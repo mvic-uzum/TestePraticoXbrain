@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,10 +21,8 @@ public class Cliente {
 	private Long id_cliente;
 	@Column(name = "nome",nullable = false)
 	private String nome;
-	@Column(name = "endereco",nullable = false)
-	private String endereco;
 	@OneToMany //Relacionamento com a entidade "Pedido"
-	@Column(name = "pedidosId",nullable = false)
+	@JoinColumn(name = "pedidosId",nullable = true) //FK
 	private List<Pedido> id_pedidos;
 	
 	//Getters e Setters
@@ -46,17 +45,8 @@ public class Cliente {
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
 	}
 
 	@Override
