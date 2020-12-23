@@ -22,7 +22,7 @@ public class Cliente {
 	@Column(name = "nome",nullable = false)
 	private String nome;
 	@OneToMany //Relacionamento com a entidade "Pedido"
-	@JoinColumn(name = "pedidosId",nullable = true) //FK
+	@JoinColumn(name = "pedidosId",nullable = false) //FK
 	private List<Pedido> id_pedidos;
 	
 	//Getters e Setters

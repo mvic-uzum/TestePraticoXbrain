@@ -32,5 +32,5 @@ public class PedidoController{
 	public Pedido realizarPedido(@RequestBody Pedido pedido){
 		return pedidoRepository.save(pedido);
 	}
-		
+	
 }

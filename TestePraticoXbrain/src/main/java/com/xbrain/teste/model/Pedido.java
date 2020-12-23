@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -22,10 +23,10 @@ public class Pedido {
 	private Long id_pedido;
 	@ManyToOne //Relacionamento com a entidade "Cliente"
 	@JoinColumn(name = "clienteId",nullable = false) //não permite que sejam deixados como nulo
-	private Cliente id_cliente;
+	private Cliente cliente;
 	@ManyToMany //Relacionamento com a entidade "Produto"
 	@JoinColumn(name = "produtosId",nullable = false) //FK
-	private List<Produto> id_produtos;
+	private List<Produto> produto;
 	@Column(name = "valorTotal",nullable = false)
 	private float valor_total;
 	@Column(name = "endereco",nullable = false)
@@ -33,9 +34,9 @@ public class Pedido {
 	
 	//Calcula o valor total do pedido
 	public float somaTotal(){
-		for(int i=0; i<id_produtos.size(); i++){
-			Produto produto = id_produtos.get(i);
-			valor_total += produto.getValor();
+		for(int i=0; i<produto.size(); i++){
+			Produto produtoPedido = produto.get(i);
+			valor_total += produtoPedido.getValor();
 		}
 		return valor_total;
 	}
@@ -47,17 +48,17 @@ public class Pedido {
 	public void setId_pedido(Long id_pedido) {
 		this.id_pedido = id_pedido;
 	}
-	public Cliente getId_cliente() {
-		return id_cliente;
+	public Cliente getCliente() {
+		return cliente;
 	}
-	public void setId_cliente(Cliente id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-	public List<Produto> getId_produtos() {
-		return id_produtos;
+	public List<Produto> getProduto() {
+		return produto;
 	}
-	public void setId_produtos(List<Produto> id_produtos) {
-		this.id_produtos = id_produtos;
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
 	}
 	public float getValor_total() {
 		return valor_total;
