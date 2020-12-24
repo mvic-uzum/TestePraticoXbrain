@@ -13,30 +13,42 @@ import javax.persistence.Table;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-@Entity //Para que haja uma tabela Pedido no banco de dados
+@Entity 
 @Table(name = "Pedido")
 public class Pedido {
 	
 	@Id
 	@Column(name = "pedidoId")
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //ID deve ser incrementado pelo banco de dados
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id_pedido;
-	@ManyToOne //Relacionamento com a entidade "Cliente"
-	@JoinColumn(name = "clienteId",nullable = false) //não permite que sejam deixados como nulo
+	@ManyToOne 
+	@JoinColumn(name = "cliId",nullable = false) 
 	private Cliente cliente;
-	@ManyToMany //Relacionamento com a entidade "Produto"
-	@JoinColumn(name = "produtosId",nullable = false) //FK
+	@ManyToMany
+	@JoinColumn(name = "prodId",nullable = false) //FK
 	private List<Produto> produto;
 	@Column(name = "valorTotal",nullable = false)
 	private float valor_total;
 	@Column(name = "endereco",nullable = false)
 	private String endereco;
 	
+	public Pedido(){	
+	}
+	
+	public Pedido(Long id_pedido,Cliente cliente,List<Produto> produto,float valor_total,String endereco) {
+		super();
+		this.id_pedido = id_pedido;
+		this.cliente = cliente;
+		this.produto = produto;
+		this.valor_total = valor_total;
+		this.endereco = endereco;
+	}
+	
 	//Calcula o valor total do pedido
 	public float somaTotal(){
 		for(int i=0; i<produto.size(); i++){
-			Produto produtoPedido = produto.get(i);
-			valor_total += produtoPedido.getValor();
+			Produto produtosPedido = produto.get(i);
+			valor_total += produtosPedido.getValor();
 		}
 		return valor_total;
 	}

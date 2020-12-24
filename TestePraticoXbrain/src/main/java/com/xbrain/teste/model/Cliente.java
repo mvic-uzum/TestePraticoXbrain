@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity //Para que haja uma tabela Cliente no banco de dados
+@Entity 
 @Table(name = "Cliente")
 public class Cliente {
 
@@ -21,23 +21,31 @@ public class Cliente {
 	private Long id_cliente;
 	@Column(name = "nome",nullable = false)
 	private String nome;
-	@OneToMany //Relacionamento com a entidade "Pedido"
+	/*@OneToMany //Relacionamento com a entidade "Pedido"
 	@JoinColumn(name = "pedidosId",nullable = false) //FK
-	private List<Pedido> id_pedidos;
+	private List<Pedido> pedido;*/
+	
+	public Cliente(){
+	}
+	
+	public Cliente(Long id_cliente,String nome,List<Pedido> pedido){
+		super();
+		this.id_cliente = id_cliente;
+		this.nome = nome;
+		//this.pedido = pedido;
+	}
 	
 	//Getters e Setters
 	public Long getId_cliente() {
 		return id_cliente;
 	}
-
-	public List<Pedido> getId_pedidos() {
-		return id_pedidos;
+	/*public List<Pedido> getPedido() {
+		return pedido;
 	}
 
-	public void setId_pedidos(List<Pedido> id_pedidos) {
-		this.id_pedidos = id_pedidos;
-	}
-
+	public void setPedido(List<Pedido> pedido) {
+		this.pedido = pedido;
+	}*/
 	public void setId_cliente(Long id_cliente) {
 		this.id_cliente = id_cliente;
 	}

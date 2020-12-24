@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-@Entity //Para que haja uma tabela Produto no banco de dados
+@Entity 
 @Table(name = "Produto")
 public class Produto {
 
@@ -23,9 +23,20 @@ public class Produto {
 	private String tipo_item;
 	@Column(name = "valor",nullable = false)
 	private float valor;
-	@ManyToMany //Relacionamento com a entidade "Pedido"
-	@JoinColumn(name = "pedidosInclusos",nullable = false) //FK
-	private List<Pedido> id_pedidos;
+	/*@ManyToMany //Relacionamento com a entidade "Pedido"
+	@JoinColumn(name = "pedidosInclusoId",nullable = false) //FK
+	private List<Pedido> pedido;*/
+	
+	public Produto(){
+	}
+	
+	public Produto(Long id_produto,String tipo_item,float valor,List<Pedido> pedido) {
+		super();
+		this.id_produto = id_produto;
+		this.tipo_item = tipo_item;
+		this.valor = valor;
+		//this.pedido = pedido;
+	}
 	
 	//Getters e Setters	
 	public Long getId_produto() {
@@ -46,12 +57,12 @@ public class Produto {
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
-	public List<Pedido> getId_pedidos() {
-		return id_pedidos;
+	/*public List<Pedido> getPedido() {
+		return pedido;
 	}
-	public void setId_pedidos(List<Pedido> id_pedidos) {
-		this.id_pedidos = id_pedidos;
-	}
+	public void setPedidos(List<Pedido> pedido) {
+		this.pedido = pedido;
+	}*/
 	
 	@Override
 	public int hashCode() {
