@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xbrain.teste.model.Pedido;
 import com.xbrain.teste.repository.PedidoRepository;
+import com.xbrain.teste.service.OrderQueueSender;
 
 @RestController
 @RequestMapping("/pedidos") //Mapeia os endpoints desenvolvidos para receber requisições iniciadas por "/pedidos"
@@ -29,8 +30,12 @@ public class PedidoController{
 	//Para cadastrar novos pedidos
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Pedido realizarPedido(@RequestBody Pedido pedido){
-		return pedidoRepository.save(pedido);
+	public void realizarPedido(@RequestBody Pedido pedido){
+		OrderQueueSender filaEntrega = new OrderQueueSender();
+		//Salva o pedido no banco de dados
+		pedidoRepository.save(pedido);
+		//Envia o pedido para a fila de entregas
+		filaEntrega.send(pedido);	
 	}
 	
 }

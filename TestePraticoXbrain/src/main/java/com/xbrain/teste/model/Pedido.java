@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+//import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+//import javax.persistence.ManyToMany;
+//import javax.persistence.ManyToOne;
 
 @Entity 
 @Table(name = "Pedido")
@@ -21,12 +21,12 @@ public class Pedido {
 	@Column(name = "pedidoId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id_pedido;
-	@ManyToOne 
+	/*@ManyToOne 
 	@JoinColumn(name = "cliId",nullable = false) 
 	private Cliente cliente;
 	@ManyToMany
 	@JoinColumn(name = "prodId",nullable = false) //FK
-	private List<Produto> produto;
+	private List<Produto> produto;*/
 	@Column(name = "valorTotal",nullable = false)
 	private float valor_total;
 	@Column(name = "endereco",nullable = false)
@@ -38,20 +38,20 @@ public class Pedido {
 	public Pedido(Long id_pedido,Cliente cliente,List<Produto> produto,float valor_total,String endereco) {
 		super();
 		this.id_pedido = id_pedido;
-		this.cliente = cliente;
-		this.produto = produto;
+		//this.cliente = cliente;
+		//this.produto = produto;
 		this.valor_total = valor_total;
 		this.endereco = endereco;
 	}
 	
 	//Calcula o valor total do pedido
-	public float somaTotal(){
+	/*public float somaTotal(){
 		for(int i=0; i<produto.size(); i++){
 			Produto produtosPedido = produto.get(i);
 			valor_total += produtosPedido.getValor();
 		}
 		return valor_total;
-	}
+	}*/
 
 	//Getters e Setters
 	public Long getId_pedido() {
@@ -60,7 +60,7 @@ public class Pedido {
 	public void setId_pedido(Long id_pedido) {
 		this.id_pedido = id_pedido;
 	}
-	public Cliente getCliente() {
+	/*public Cliente getCliente() {
 		return cliente;
 	}
 	public void setCliente(Cliente cliente) {
@@ -71,7 +71,7 @@ public class Pedido {
 	}
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
-	}
+	}*/
 	public float getValor_total() {
 		return valor_total;
 	}
