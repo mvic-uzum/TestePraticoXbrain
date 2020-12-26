@@ -6,9 +6,9 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +30,11 @@ public class PedidoController{
 	@GetMapping
 	public List<Pedido> listarPedidos(){
 		return pedidoRepository.findAll();
+	}
+	
+	@GetMapping("/{idPedido}")
+	public Pedido findByIdPedido(@PathVariable Long idPedido) {
+		return pedidoRepository.findByIdPedido(idPedido);
 	}
 	
 	//Para cadastrar novos pedidos

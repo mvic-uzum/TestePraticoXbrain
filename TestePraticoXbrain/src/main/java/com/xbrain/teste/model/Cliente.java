@@ -17,25 +17,25 @@ public class Cliente {
 	@Id
 	@Column(name = "clienteId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //ID deve ser incrementado pelo banco de dados
-	private Long id_cliente;
+	private Long idCliente;
 	@Column(name = "nome",nullable = false)
 	private String nome;
 	
 	public Cliente(){
 	}
 	
-	public Cliente(Long id_cliente,String nome){
+	public Cliente(Long idCliente,String nome){
 		super();
-		this.id_cliente = id_cliente;
+		this.idCliente = idCliente;
 		this.nome = nome;
 	}
 	
 	//Getters e Setters
-	public Long getId_cliente() {
-		return id_cliente;
+	public Long getIdCliente() {
+		return idCliente;
 	}
-	public void setId_cliente(Long id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
 	}
 
 	public String getNome() {
@@ -49,7 +49,7 @@ public class Cliente {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id_cliente == null) ? 0 : id_cliente.hashCode());
+		result = prime * result + ((idCliente == null) ? 0 : idCliente.hashCode());
 		return result;
 	}
 
@@ -62,12 +62,12 @@ public class Cliente {
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		if (id_cliente == null) {
-			if (other.id_cliente != null)
+		if (idCliente == null) {
+			if (other.idCliente != null)
 				return false;
-		} else if (!id_cliente.equals(other.id_cliente))
+		} else if (!idCliente.equals(other.idCliente))
 			return false;
 		return true;
-	}	
+	}
 	
 }

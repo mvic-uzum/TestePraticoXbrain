@@ -7,5 +7,5 @@ import com.xbrain.teste.model.Pedido;
 
 @Repository //Responsável pela interação com o Banco de Dados
 public interface PedidoRepository extends JpaRepository<Pedido, Long>{
-	//Automaticamente implementado pelo Spring Data JPA
+	Pedido findByIdPedido(Long idPedido);
 }

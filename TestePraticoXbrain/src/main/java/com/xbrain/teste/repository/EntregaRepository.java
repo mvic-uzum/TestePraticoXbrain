@@ -7,5 +7,5 @@ import com.xbrain.teste.model.Entrega;
 
 @Repository //Responsável pela interação com o Banco de Dados
 public interface EntregaRepository extends JpaRepository<Entrega, Long>{
-	//Automaticamente implementado pelo Spring Data JPA
+	Entrega findByIdEntrega(Long idEntrega);
 }

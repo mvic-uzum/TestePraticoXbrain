@@ -17,37 +17,37 @@ public class Entrega{
 	@Id
 	@Column(name = "entregaId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_entrega;
+	private Long idEntrega;
 	@Column(name = "idPedido",nullable = false)
-	private Long id_pedido; 
+	private Long idPedido; 
 	@Column(name = "endereco",nullable = false)
 	private String endereco; 
 	
 	public Entrega(){
 	}
 	
-	public Entrega(Long id_entrega,Long id_pedido,String endereco){
+	public Entrega(Long idEntrega,Long idPedido,String endereco){
 		super();
-		this.id_entrega = id_entrega;
-		this.id_pedido = id_pedido;
+		this.idEntrega = idEntrega;
+		this.idPedido = idPedido;
 		this.endereco = endereco;
 	}
 	
 	//Getters and Setters
-	public Long getId_entrega() {
-		return id_entrega;
+	public Long getIdEntrega() {
+		return idEntrega;
 	}
 
-	public void setId_entrega(Long id_entrega) {
-		this.id_entrega = id_entrega;
+	public void setIdEntrega(Long idEntrega) {
+		this.idEntrega = idEntrega;
 	}
 
-	public Long getId_pedido() {
-		return id_pedido;
+	public Long getIdPedido() {
+		return idPedido;
 	}
 
-	public void setId_pedido(Long id_pedido) {
-		this.id_pedido = id_pedido;
+	public void setIdPedido(Long idPedido) {
+		this.idPedido = idPedido;
 	}
 	public String getEndereco() {
 		return endereco;
@@ -56,12 +56,12 @@ public class Entrega{
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id_entrega == null) ? 0 : id_entrega.hashCode());
+		result = prime * result + ((idEntrega == null) ? 0 : idEntrega.hashCode());
 		return result;
 	}
 
@@ -74,10 +74,10 @@ public class Entrega{
 		if (getClass() != obj.getClass())
 			return false;
 		Entrega other = (Entrega) obj;
-		if (id_entrega == null) {
-			if (other.id_entrega != null)
+		if (idEntrega == null) {
+			if (other.idEntrega != null)
 				return false;
-		} else if (!id_entrega.equals(other.id_entrega))
+		} else if (!idEntrega.equals(other.idEntrega))
 			return false;
 		return true;
 	}

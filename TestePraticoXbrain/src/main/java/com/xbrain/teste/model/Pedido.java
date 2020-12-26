@@ -23,7 +23,7 @@ public class Pedido{
 	@Id
 	@Column(name = "pedidoId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private Long id_pedido;
+	private Long idPedido;
 	@ManyToOne 
 	@JoinColumn(name = "cliId",nullable = false) //FK
 	private Cliente cliente;
@@ -38,9 +38,9 @@ public class Pedido{
 	public Pedido(){	
 	}
 	
-	public Pedido(Long id_pedido,Cliente cliente,List<Produto> produto,double valor_total,String endereco) {
+	public Pedido(Long idPedido,Cliente cliente,List<Produto> produto,double valor_total,String endereco) {
 		super();
-		this.id_pedido = id_pedido;
+		this.idPedido = idPedido;
 		this.cliente = cliente;
 		this.produto = produto;
 		this.valor_total = valor_total;
@@ -48,11 +48,11 @@ public class Pedido{
 	}
 
 	//Getters e Setters
-	public Long getId_pedido() {
-		return id_pedido;
+	public Long getIdPedido() {
+		return idPedido;
 	}
-	public void setId_pedido(Long id_pedido) {
-		this.id_pedido = id_pedido;
+	public void setIdPedido(Long idPedido) {
+		this.idPedido = idPedido;
 	}
 	public Cliente getCliente() {
 		return cliente;
@@ -78,15 +78,15 @@ public class Pedido{
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id_pedido == null) ? 0 : id_pedido.hashCode());
+		result = prime * result + ((idPedido == null) ? 0 : idPedido.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -96,10 +96,10 @@ public class Pedido{
 		if (getClass() != obj.getClass())
 			return false;
 		Pedido other = (Pedido) obj;
-		if (id_pedido == null) {
-			if (other.id_pedido != null)
+		if (idPedido == null) {
+			if (other.idPedido != null)
 				return false;
-		} else if (!id_pedido.equals(other.id_pedido))
+		} else if (!idPedido.equals(other.idPedido))
 			return false;
 		return true;
 	}

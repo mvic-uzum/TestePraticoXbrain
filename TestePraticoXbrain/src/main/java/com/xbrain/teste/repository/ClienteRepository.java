@@ -7,4 +7,5 @@ import com.xbrain.teste.model.Cliente;
 
 @Repository //Responsável pela interação com o Banco de Dados
 public interface ClienteRepository extends JpaRepository<Cliente, Long>{
+	Cliente findByIdCliente(Long idCliente);
 }

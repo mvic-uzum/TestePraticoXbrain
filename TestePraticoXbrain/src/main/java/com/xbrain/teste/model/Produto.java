@@ -17,34 +17,34 @@ public class Produto {
 	@Id
 	@Column(name = "produtoId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //ID deve ser incrementado pelo banco de dados
-	private Long id_produto;
+	private Long idProduto;
 	@Column(name = "tipoItem",nullable = false)
-	private String tipo_item;
+	private String tipoItem;
 	@Column(name = "valor",nullable = false)
 	private double valor;
 	
 	public Produto(){
 	}
 	
-	public Produto(Long id_produto,String tipo_item,double valor) {
+	public Produto(Long idProduto,String tipoItem,double valor) {
 		super();
-		this.id_produto = id_produto;
-		this.tipo_item = tipo_item;
+		this.idProduto = idProduto;
+		this.tipoItem = tipoItem;
 		this.valor = valor;
 	}
 	
 	//Getters e Setters	
-	public Long getId_produto() {
-		return id_produto;
+	public Long getIdProduto() {
+		return idProduto;
 	}
-	public void setId_produto(Long id_produto) {
-		this.id_produto = id_produto;
+	public void setIdProduto(Long idProduto) {
+		this.idProduto = idProduto;
 	}
-	public String getTipo_item() {
-		return tipo_item;
+	public String getTipoItem() {
+		return tipoItem;
 	}
-	public void setTipo_item(String tipo_item) {
-		this.tipo_item = tipo_item;
+	public void setTipoItem(String tipoItem) {
+		this.tipoItem = tipoItem;
 	}
 	public double getValor() {
 		return valor;
@@ -52,15 +52,15 @@ public class Produto {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id_produto == null) ? 0 : id_produto.hashCode());
+		result = prime * result + ((idProduto == null) ? 0 : idProduto.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -70,10 +70,10 @@ public class Produto {
 		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
-		if (id_produto == null) {
-			if (other.id_produto != null)
+		if (idProduto == null) {
+			if (other.idProduto != null)
 				return false;
-		} else if (!id_produto.equals(other.id_produto))
+		} else if (!idProduto.equals(other.idProduto))
 			return false;
 		return true;
 	}
