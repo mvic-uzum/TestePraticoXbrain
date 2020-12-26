@@ -1,14 +1,10 @@
 package com.xbrain.teste.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity 
@@ -21,31 +17,20 @@ public class Cliente {
 	private Long id_cliente;
 	@Column(name = "nome",nullable = false)
 	private String nome;
-	/*@OneToMany //Relacionamento com a entidade "Pedido"
-	@JoinColumn(name = "pedidosId",nullable = false) //FK
-	private List<Pedido> pedido;*/
 	
 	public Cliente(){
 	}
 	
-	public Cliente(Long id_cliente,String nome,List<Pedido> pedido){
+	public Cliente(Long id_cliente,String nome){
 		super();
 		this.id_cliente = id_cliente;
 		this.nome = nome;
-		//this.pedido = pedido;
 	}
 	
 	//Getters e Setters
 	public Long getId_cliente() {
 		return id_cliente;
 	}
-	/*public List<Pedido> getPedido() {
-		return pedido;
-	}
-
-	public void setPedido(List<Pedido> pedido) {
-		this.pedido = pedido;
-	}*/
 	public void setId_cliente(Long id_cliente) {
 		this.id_cliente = id_cliente;
 	}

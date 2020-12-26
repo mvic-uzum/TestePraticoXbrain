@@ -7,5 +7,4 @@ import com.xbrain.teste.model.Cliente;
 
 @Repository //Responsável pela interação com o Banco de Dados
 public interface ClienteRepository extends JpaRepository<Cliente, Long>{
-	//Automaticamente implementado pelo Spring Data JPA
 }

@@ -7,29 +7,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+
+import com.xbrain.teste.service.CalculationService;
 
 import lombok.ToString;
 
-//import javax.persistence.ManyToMany;
-//import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity 
 @Table(name = "Pedido")
 @ToString
-public class Pedido {
+public class Pedido{
 	
 	@Id
 	@Column(name = "pedidoId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id_pedido;
-	/*@ManyToOne 
-	@JoinColumn(name = "cliId",nullable = false) 
+	@ManyToOne 
+	@JoinColumn(name = "cliId",nullable = false) //FK
 	private Cliente cliente;
 	@ManyToMany
 	@JoinColumn(name = "prodId",nullable = false) //FK
-	private List<Produto> produto;*/
+	private List<Produto> produto;
 	@Column(name = "valorTotal",nullable = false)
 	//CalculationService calculationService = new CalculationService();
 	//private float calculationService.somaTotal(List<Produto> produto);
@@ -43,8 +45,8 @@ public class Pedido {
 	public Pedido(Long id_pedido,Cliente cliente,List<Produto> produto,float valor_total,String endereco) {
 		super();
 		this.id_pedido = id_pedido;
-		//this.cliente = cliente;
-		//this.produto = produto;
+		this.cliente = cliente;
+		this.produto = produto;
 		this.valor_total = valor_total;
 		this.endereco = endereco;
 	}
@@ -56,7 +58,7 @@ public class Pedido {
 	public void setId_pedido(Long id_pedido) {
 		this.id_pedido = id_pedido;
 	}
-	/*public Cliente getCliente() {
+	public Cliente getCliente() {
 		return cliente;
 	}
 	public void setCliente(Cliente cliente) {
@@ -67,7 +69,7 @@ public class Pedido {
 	}
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
-	}*/
+	}
 	public float getValor_total() {
 		return valor_total;
 	}
