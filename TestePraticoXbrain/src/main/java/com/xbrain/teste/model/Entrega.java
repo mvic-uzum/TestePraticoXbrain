@@ -7,16 +7,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.ToString;
+
 @Entity
 @Table(name = "Entrega")
+@ToString
 public class Entrega{
 	
 	@Id
 	@Column(name = "entregaId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_entrega;
-	@Column(name = "idPedido",nullable = false)
-	private int id_pedido; //teste
+	//@Column(name = "idPedido",nullable = false)
+	//private int id_pedido; //teste
 	@Column(name = "endereco",nullable = false)
 	private String endereco; //teste
 	
@@ -26,7 +29,7 @@ public class Entrega{
 	public Entrega(Long id_entrega,int id_pedido,String endereco){
 		super();
 		this.id_entrega = id_entrega;
-		this.id_pedido = id_pedido;
+		//this.id_pedido = id_pedido;
 		this.endereco = endereco;
 	}
 	
@@ -39,14 +42,13 @@ public class Entrega{
 		this.id_entrega = id_entrega;
 	}
 
-	public int getId_pedido() {
+	/*public int getId_pedido() {
 		return id_pedido;
 	}
 
 	public void setId_pedido(int id_pedido) {
 		this.id_pedido = id_pedido;
-	}
-
+	}*/
 	public String getEndereco() {
 		return endereco;
 	}

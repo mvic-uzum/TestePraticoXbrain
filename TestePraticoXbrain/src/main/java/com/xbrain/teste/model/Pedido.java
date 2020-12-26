@@ -10,11 +10,14 @@ import javax.persistence.Id;
 //import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
+import lombok.ToString;
+
 //import javax.persistence.ManyToMany;
 //import javax.persistence.ManyToOne;
 
 @Entity 
 @Table(name = "Pedido")
+@ToString
 public class Pedido {
 	
 	@Id
