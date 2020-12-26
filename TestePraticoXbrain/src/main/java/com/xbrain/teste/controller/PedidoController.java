@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xbrain.teste.config.MessagingConfig;
+import com.xbrain.teste.model.Entrega;
 //import com.xbrain.teste.model.Entrega;
 import com.xbrain.teste.model.Pedido;
 import com.xbrain.teste.repository.PedidoRepository;
@@ -36,11 +37,13 @@ public class PedidoController{
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public String realizarPedido(@RequestBody Pedido pedido){
-        //Entrega entrega = new Entrega();
 		//Salvando o pedido no banco de dados
 		pedidoRepository.save(pedido);
 		//Enviando para a fila de entrega
-        template.convertAndSend(MessagingConfig.EXCHANGE, MessagingConfig.ROUTING_KEY, pedido); //mudar pra entrega
+		Entrega entrega = new Entrega();
+		entrega.setId_pedido(pedido.getId_pedido());
+		entrega.setEndereco(pedido.getEndereco());
+        template.convertAndSend(MessagingConfig.EXCHANGE, MessagingConfig.ROUTING_KEY, entrega);
         System.out.println("Pedido enviado com sucesso à fila de entrega!");
         return "Pedido realizado com sucesso!";
 	}
