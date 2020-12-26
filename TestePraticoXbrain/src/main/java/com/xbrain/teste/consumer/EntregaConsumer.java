@@ -16,7 +16,7 @@ public class EntregaConsumer{
 	
 	 @RabbitListener(queues = MessagingConfig.QUEUE)
 	 public void consumeMessageFromQueue(Entrega entrega){
-		 System.out.println("Solicitação de entrega recebida!"); 
+		 System.out.println("Solicitação de entrega do pedido "+entrega.getId_pedido()+" recebida!"); 
 		 //Salva no banco de dados
 		 entregaRepository.save(entrega);
 	 }

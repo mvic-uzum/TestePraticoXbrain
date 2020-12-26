@@ -31,6 +31,8 @@ public class Pedido {
 	@JoinColumn(name = "prodId",nullable = false) //FK
 	private List<Produto> produto;*/
 	@Column(name = "valorTotal",nullable = false)
+	//CalculationService calculationService = new CalculationService();
+	//private float calculationService.somaTotal(List<Produto> produto);
 	private float valor_total;
 	@Column(name = "endereco",nullable = false)
 	private String endereco;

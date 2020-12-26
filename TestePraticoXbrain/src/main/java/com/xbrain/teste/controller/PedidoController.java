@@ -43,7 +43,7 @@ public class PedidoController{
 		Entrega entrega = new Entrega();
 		entrega.setId_pedido(pedido.getId_pedido());
 		entrega.setEndereco(pedido.getEndereco());
-        template.convertAndSend(MessagingConfig.EXCHANGE, MessagingConfig.ROUTING_KEY, entrega);
+        template.convertAndSend(MessagingConfig.EXCHANGE,MessagingConfig.ROUTING_KEY,entrega);
         System.out.println("Pedido enviado com sucesso à fila de entrega!");
         return "Pedido realizado com sucesso!";
 	}
