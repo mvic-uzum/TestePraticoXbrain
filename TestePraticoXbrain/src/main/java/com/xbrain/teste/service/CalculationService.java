@@ -7,12 +7,10 @@ import com.xbrain.teste.model.Produto;
 //Calcula o valor total do pedido
 public class CalculationService{
 	
-	private float valor_total;
-	
-	public float somaTotal(List<Produto> produto){
-		for(int i=0; i<produto.size(); i++){
-			Produto produtosPedido = produto.get(i);
-			valor_total += produtosPedido.getValor();
+	public double somaTotal(List<Produto> produto){
+		double valor_total = 0;
+		for(int i=0;i<produto.size();i++){
+			valor_total += produto.get(i).getValor();
 		}
 		return valor_total;
 	}

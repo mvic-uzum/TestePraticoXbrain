@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.ToString;
+
 @Entity 
 @Table(name = "Produto")
+@ToString
 public class Produto {
 
 	@Id
@@ -18,12 +21,12 @@ public class Produto {
 	@Column(name = "tipoItem",nullable = false)
 	private String tipo_item;
 	@Column(name = "valor",nullable = false)
-	private float valor;
+	private double valor;
 	
 	public Produto(){
 	}
 	
-	public Produto(Long id_produto,String tipo_item,float valor) {
+	public Produto(Long id_produto,String tipo_item,double valor) {
 		super();
 		this.id_produto = id_produto;
 		this.tipo_item = tipo_item;
@@ -43,10 +46,10 @@ public class Produto {
 	public void setTipo_item(String tipo_item) {
 		this.tipo_item = tipo_item;
 	}
-	public float getValor() {
+	public double getValor() {
 		return valor;
 	}
-	public void setValor(float valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 	

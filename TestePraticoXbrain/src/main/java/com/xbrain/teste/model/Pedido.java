@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
-import com.xbrain.teste.service.CalculationService;
-
 import lombok.ToString;
 
 import javax.persistence.ManyToMany;
@@ -33,16 +31,14 @@ public class Pedido{
 	@JoinColumn(name = "prodId",nullable = false) //FK
 	private List<Produto> produto;
 	@Column(name = "valorTotal",nullable = false)
-	//CalculationService calculationService = new CalculationService();
-	//private float calculationService.somaTotal(List<Produto> produto);
-	private float valor_total;
+	private double valor_total;
 	@Column(name = "endereco",nullable = false)
 	private String endereco;
 	
 	public Pedido(){	
 	}
 	
-	public Pedido(Long id_pedido,Cliente cliente,List<Produto> produto,float valor_total,String endereco) {
+	public Pedido(Long id_pedido,Cliente cliente,List<Produto> produto,double valor_total,String endereco) {
 		super();
 		this.id_pedido = id_pedido;
 		this.cliente = cliente;
@@ -70,10 +66,10 @@ public class Pedido{
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
-	public float getValor_total() {
+	public double getValor_total() {
 		return valor_total;
 	}
-	public void setValor_total(float valor_total) {
+	public void setValor_total(double valor_total) {
 		this.valor_total = valor_total;
 	}
 	public String getEndereco() {

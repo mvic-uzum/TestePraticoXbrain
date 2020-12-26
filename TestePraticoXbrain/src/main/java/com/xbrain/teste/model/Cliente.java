@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.ToString;
+
 @Entity 
 @Table(name = "Cliente")
+@ToString
 public class Cliente {
 
 	@Id
