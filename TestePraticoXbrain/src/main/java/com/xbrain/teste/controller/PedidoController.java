@@ -39,7 +39,7 @@ public class PedidoController{
 	public String realizarPedido(@RequestBody Pedido pedido){
 		//Salvando o pedido no banco de dados
 		pedidoRepository.save(pedido);
-		//Enviando para a fila de entrega
+		//Enviando para a fila de entrega - Publisher
 		Entrega entrega = new Entrega();
 		entrega.setId_pedido(pedido.getId_pedido());
 		entrega.setEndereco(pedido.getEndereco());

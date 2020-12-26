@@ -46,15 +46,6 @@ public class Pedido {
 		this.valor_total = valor_total;
 		this.endereco = endereco;
 	}
-	
-	//Calcula o valor total do pedido
-	/*public float somaTotal(){
-		for(int i=0; i<produto.size(); i++){
-			Produto produtosPedido = produto.get(i);
-			valor_total += produtosPedido.getValor();
-		}
-		return valor_total;
-	}*/
 
 	//Getters e Setters
 	public Long getId_pedido() {
