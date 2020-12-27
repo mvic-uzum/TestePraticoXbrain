@@ -17,7 +17,7 @@ import com.xbrain.teste.repository.ClienteRepository;
 
 @RestController
 @RequestMapping("/clientes") //Mapeia os endpoints desenvolvidos para receber requisições iniciadas por "/clientes"
-public class ClienteController {
+public class ClienteController{
 
 	@Autowired //Instancia a implementação fornecida em tempo de execução pelo Spring Data JPA
 	private ClienteRepository clienteRepository;
@@ -38,4 +38,5 @@ public class ClienteController {
 	public Cliente cadastrarCliente(@RequestBody Cliente cliente){
 		return clienteRepository.save(cliente);
 	}
+	
 }
