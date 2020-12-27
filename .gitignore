@@ -19,3 +19,8 @@
 *.JavacSingularsRecipes$JavacSingularizer
 *.JavacASTVisitor
 *.txt
+*.prefs
+TestePraticoXbrain/.classpath
+*.properties
+*.md
+TestePraticoXbrain/.project
