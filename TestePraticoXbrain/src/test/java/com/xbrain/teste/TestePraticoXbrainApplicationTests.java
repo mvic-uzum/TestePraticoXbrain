@@ -98,11 +98,12 @@ public class TestePraticoXbrainApplicationTests{
 	@Autowired
 	private PedidoService pedidoService;
 	
+	@Autowired
+	private CalculationService calculationService;
+	
 	@MockBean 
 	private PedidoRepository pedidoRepository;
 	
-	@MockBean
-	private CalculationService calculationService;
 	
 	@Test 
 	public void listarPedidosTest(){
@@ -152,15 +153,13 @@ public class TestePraticoXbrainApplicationTests{
 	//Teste do cálculo do valor total do pedido
 	@Test
 	public void somaTotalTest(){
-		double valorTotal = 0;
-		Produto produto1 = new Produto(1L,"Camisa",30.50);
+		Produto produto1 = new Produto(1L,"Camisa",30.50); 
 		Produto produto2 = new Produto(2L,"Tênis",180);
 		List<Produto> lista = new ArrayList<Produto>();
 		lista.add(produto1);
 		lista.add(produto2);
 		double soma = produto1.getValor() + produto2.getValor();
-		when(calculationService.somaTotal(lista)).thenReturn(valorTotal);
-		assertEquals(soma,valorTotal,0); //Range para cálculos de precisão numérica
+		assertEquals(soma,calculationService.somaTotal(lista),0); //Range para cálculos de precisão numérica
 	}
 	
 	//Testes - Entrega
