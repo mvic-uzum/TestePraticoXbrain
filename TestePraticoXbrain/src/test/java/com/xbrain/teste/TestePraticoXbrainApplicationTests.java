@@ -49,7 +49,12 @@ public class TestePraticoXbrainApplicationTests{
 	
 	@Test
 	public void findByIdClienteTest(){
-		
+		Cliente cliente = new Cliente(1L,"Maria");
+		when(clienteRepository.findByIdCliente(1L)).thenReturn(cliente);
+		Cliente clienteRetornado = clienteService.findByIdCliente(1L);
+		verify(clienteRepository, times(1)).findByIdCliente(1L);
+		verifyNoMoreInteractions(clienteRepository);
+		assertEquals(clienteRetornado,cliente);
 	}
 	
 	@Test
@@ -74,6 +79,12 @@ public class TestePraticoXbrainApplicationTests{
 	
 	@Test
 	public void findByIdProdutoTest(){	
+		Produto produto = new Produto(1L,"Camisa",30.50);
+		when(produtoRepository.findByIdProduto(1L)).thenReturn(produto);
+		Produto produtoRetornado = produtoService.findByIdProduto(1L);
+		verify(produtoRepository, times(1)).findByIdProduto(1L);
+		verifyNoMoreInteractions(produtoRepository);
+		assertEquals(produtoRetornado,produto);
 	}
 	
 	@Test
@@ -90,16 +101,19 @@ public class TestePraticoXbrainApplicationTests{
 	@MockBean 
 	private PedidoRepository pedidoRepository;
 	
+	@MockBean
+	private CalculationService calculationService;
+	
 	@Test 
 	public void listarPedidosTest(){
 		Cliente cliente = new Cliente(1L,"Maria");
 		Produto produto1 = new Produto(1L,"Camisa",30.50);
 		Produto produto2 = new Produto(2L,"Tênis",180);
 		Produto produto3 = new Produto(3L,"Jaqueta",320.87);
-		List<Produto> lista1 = new ArrayList<>();
+		List<Produto> lista1 = new ArrayList<Produto>();
 		lista1.add(produto1);
 		lista1.add(produto2);
-		List<Produto> lista2 = new ArrayList<>();
+		List<Produto> lista2 = new ArrayList<Produto>();
 		lista2.add(produto2);
 		lista2.add(produto3);
 		when(pedidoRepository.findAll()).thenReturn(Stream.of(new Pedido(1L,cliente,lista1,210.5,"Rua XV"),new Pedido(2L,cliente,lista2,500.87,"Rua Amazonas")).collect(Collectors.toList()));
@@ -108,23 +122,41 @@ public class TestePraticoXbrainApplicationTests{
 	
 	@Test
 	public void findByIdPedidoTest(){	
+		Cliente cliente = new Cliente(1L,"Maria");
+		Produto produto = new Produto(1L,"Camisa",30.50);
+		List<Produto> listaProdutos = new ArrayList<Produto>();
+		listaProdutos.add(produto);
+		Pedido pedido = new Pedido(1L,cliente,listaProdutos,30.50,"Rua dos Bosques");
+		when(pedidoRepository.findByIdPedido(1L)).thenReturn(pedido);
+		Pedido pedidoRetornado = pedidoService.findByIdPedido(1L);
+		verify(pedidoRepository, times(1)).findByIdPedido(1L);
+		verifyNoMoreInteractions(pedidoRepository);
+		assertEquals(pedidoRetornado,pedido);
 	}
 	
-	//Conferir teste de registro da Entrega
 	@Test
 	public void realizarPedidoTest(){
 		Cliente cliente = new Cliente(1L,"Maria");
-		Produto produto1 = new Produto(1L,"Camisa",30.50);
-		List<Produto> lista = new ArrayList<>();
-		lista.add(produto1);
+		Produto produto = new Produto(1L,"Camisa",30.50);
+		List<Produto> lista = new ArrayList<Produto>();
+		lista.add(produto);
 		Pedido pedido = new Pedido(1L,cliente,lista,30.50,"Rua dos Bosques");
-		when(pedidoRepository.save(pedido)).thenReturn(pedido);
-		assertEquals(pedido,pedidoService.realizarPedido(pedido));
 	}
 	
 	//Teste do cálculo do valor total do pedido
 	@Test
 	public void somaTotalTest(){
+		Produto produto1 = new Produto(1L,"Camisa",30.50);
+		Produto produto2 = new Produto(2L,"Tênis",180);
+		List<Produto> lista = new ArrayList<Produto>();
+		lista.add(produto1);
+		lista.add(produto2);
+		//Passando os valores do produto para uma nova lista
+		List<Produto> produtosVendidos = lista.stream().map(produto -> produtoService.findByIdProduto(produto.getIdProduto())).collect(Collectors.toList());
+		double valorTotal = 0;
+		double soma = produto1.getValor() + produto2.getValor();
+		when(calculationService.somaTotal(produtosVendidos)).thenReturn(valorTotal);
+		assertEquals(soma,valorTotal,0); //Range para cálculos de precisão numérica
 	}
 	
 	//Testes - Entrega
@@ -142,6 +174,12 @@ public class TestePraticoXbrainApplicationTests{
 	
 	@Test
 	public void findByIdEntregaTest(){
+		Entrega entrega = new Entrega(1L,1L,"Rua XV");
+		when(entregaRepository.findByIdEntrega(1L)).thenReturn(entrega);
+		Entrega entregaRetornada = entregaService.findByIdEntrega(1L);
+		verify(entregaRepository, times(1)).findByIdEntrega(1L);
+		verifyNoMoreInteractions(entregaRepository);
+		assertEquals(entregaRetornada,entrega);
 	}
 		
 }
