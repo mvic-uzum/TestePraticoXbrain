@@ -32,18 +32,3 @@ build/
 ### VS Code ###
 .vscode/
 
-TestePraticoXbrain/.mvn/wrapper
-TestePraticoXbrain/Class50/lombok
-TestePraticoXbrain/META-INF
-TestePraticoXbrain/lombok
-TestePraticoXbrain/org/objectweb/asm
-TestePraticoXbrain/secondaryLoading.SCL.lombok
-TestePraticoXbrain/com/zwitserloot/cmdreader
-TestePraticoXbrain/AUTHORS
-TestePraticoXbrain/LICENSE
-TestePraticoXbrain/changelog.txt
-TestePraticoXbrain/latestchanged.html
-TestePraticoXbrain/module-info.class
-TestePraticoXbrain/release-timestamp.txt
-TestePraticoXbrain/README.md
-
