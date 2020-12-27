@@ -13,30 +13,30 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xbrain.teste.model.Cliente;
-import com.xbrain.teste.repository.ClienteRepository;
+import com.xbrain.teste.service.ClienteService;
 
 @RestController
 @RequestMapping("/clientes") //Mapeia os endpoints desenvolvidos para receber requisições iniciadas por "/clientes"
 public class ClienteController{
 
 	@Autowired //Instancia a implementação fornecida em tempo de execução pelo Spring Data JPA
-	private ClienteRepository clienteRepository;
+	private ClienteService clienteService;
 	
 	@GetMapping
 	public List<Cliente> listarClientes(){
-		return clienteRepository.findAll();
+		return clienteService.listarClientes();
 	}
 	
 	@GetMapping("/{idCliente}")
 	public Cliente findByIdCliente(@PathVariable Long idCliente) {
-		return clienteRepository.findByIdCliente(idCliente);
+		return clienteService.findByIdCliente(idCliente);
 	}
 	
 	//Para cadastrar novos clientes
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cliente cadastrarCliente(@RequestBody Cliente cliente){
-		return clienteRepository.save(cliente);
+		return clienteService.cadastrarCliente(cliente);
 	}
 	
 }

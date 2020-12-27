@@ -10,7 +10,7 @@ import com.xbrain.teste.model.Pedido;
 import com.xbrain.teste.repository.EntregaRepository;
 
 @Component
-public class PedidoConsumer{
+public class PedidoConsumer{  
 
 	 @Autowired //Instancia a implementação fornecida em tempo de execução pelo Spring Data JPA
 	 private EntregaRepository entregaRepository;

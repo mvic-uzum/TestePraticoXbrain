@@ -13,30 +13,30 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xbrain.teste.model.Produto;
-import com.xbrain.teste.repository.ProdutoRepository;
+import com.xbrain.teste.service.ProdutoService;
 
 @RestController
 @RequestMapping("/produtos") //Mapeia os endpoints desenvolvidos para receber requisições iniciadas por "/produtos"
 public class ProdutoController {
 	
 	@Autowired //Instancia a implementação fornecida em tempo de execução pelo Spring Data JPA
-	private ProdutoRepository produtoRepository;
+	private ProdutoService produtoService;
 	
 	@GetMapping
-	public List<Produto> listarProdutos(){
-		return produtoRepository.findAll();
+	public List<Produto> listarProdutos(){ 
+		return produtoService.listarProdutos();
 	}
 	
 	@GetMapping("/{idProduto}")
 	public Produto findByIdProduto(@PathVariable Long idProduto) {
-		return produtoRepository.findByIdProduto(idProduto);
+		return produtoService.findByIdProduto(idProduto);
 	}
 	
 	//Para cadastrar novos produtos
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Produto cadastrarProduto(@RequestBody Produto produto){
-		return produtoRepository.save(produto);
+		return produtoService.cadastrarProduto(produto);
 	}
 	
 }
