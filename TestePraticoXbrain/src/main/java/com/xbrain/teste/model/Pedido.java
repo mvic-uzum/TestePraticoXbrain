@@ -35,7 +35,7 @@ public class Pedido{
 	@Column(name = "endereco",nullable = false)
 	private String endereco;
 	
-	public Pedido(){	
+	public Pedido(){	 
 	}
 	
 	public Pedido(Long idPedido,Cliente cliente,List<Produto> produto,double valor_total,String endereco) {

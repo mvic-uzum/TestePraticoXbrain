@@ -28,7 +28,7 @@ public class PedidoController{
 	}
 	
 	@GetMapping("/{idPedido}")
-	public Pedido findByIdPedido(@PathVariable Long idPedido) {
+	public Pedido findByIdPedido(@PathVariable Long idPedido){
 		return pedidoService.findByIdPedido(idPedido);
 	}
 	
