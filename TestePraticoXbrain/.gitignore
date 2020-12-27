@@ -32,18 +32,18 @@ build/
 ### VS Code ###
 .vscode/
 
-.mvn/wrapper
-Class50/lombok
-META-INF
-lombok
-org/objectweb/asm
-secondaryLoading.SCL.lombok
-com/zwitserloot/cmdreader
-AUTHORS
-LICENSE
-changelog.txt
-latestchanged.html
-module-info.class
-release-timestamp.txt
-README.md
+!.mvn/wrapper
+!Class50/lombok
+!META-INF
+!lombok
+!org/objectweb/asm
+!secondaryLoading.SCL.lombok
+!com/zwitserloot/cmdreader
+.AUTHORS
+.LICENSE
+.changelog.txt
+.latestchanged.html
+.module-info.class
+.release-timestamp.txt
+.README.md
 
