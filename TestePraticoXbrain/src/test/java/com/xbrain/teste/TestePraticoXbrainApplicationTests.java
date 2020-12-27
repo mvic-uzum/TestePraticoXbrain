@@ -134,37 +134,32 @@ public class TestePraticoXbrainApplicationTests{
 		assertEquals(pedido,pedidoRetornado);
 	}
 	
-	@Test //Arrumar
+	@Test 
 	public void realizarPedidoTest(){
 		Cliente cliente = new Cliente(1L,"Maria");
 		Produto produto = new Produto(1L,"Camisa",30.50);
 		List<Produto> lista = new ArrayList<Produto>();
 		lista.add(produto);
-		Pedido pedido = new Pedido(1L,cliente,lista,30.50,"Rua dos Bosques");
-		String pedidoRealizado = "Pedido realizado com sucesso!";
-		String pedidoRetornado = pedidoService.realizarPedido(pedido);
-		assertEquals(pedidoRealizado,pedidoRetornado);
+		Pedido pedido = new Pedido();
+		pedido.setIdPedido(1L);
+		pedido.setCliente(cliente);
+		pedido.setProduto(lista);
+		pedido.setEndereco("Rua XV");
+		String pedidoSucesso = "Pedido realizado com sucesso!";
+		assertEquals(pedidoSucesso,pedidoService.realizarPedido(pedido));
 	}
 	
 	//Teste do cálculo do valor total do pedido
 	@Test
 	public void somaTotalTest(){
 		double valorTotal = 0;
-		Cliente cliente = new Cliente(1L,"Maria");
 		Produto produto1 = new Produto(1L,"Camisa",30.50);
 		Produto produto2 = new Produto(2L,"Tênis",180);
 		List<Produto> lista = new ArrayList<Produto>();
 		lista.add(produto1);
 		lista.add(produto2);
-		Pedido pedido = new Pedido();
-		pedido.setIdPedido(1L);
-		pedido.setCliente(cliente);
-		pedido.setProduto(lista);
-		pedido.setEndereco("Rua dos Bosques");
-		//Passando os produtos para uma nova lista
-		List<Produto> produtosVendidos = pedido.getProduto().stream().map(produto -> produtoRepository.findByIdProduto(produto.getIdProduto())).collect(Collectors.toList());
 		double soma = produto1.getValor() + produto2.getValor();
-		when(calculationService.somaTotal(produtosVendidos)).thenReturn(valorTotal);
+		when(calculationService.somaTotal(lista)).thenReturn(valorTotal);
 		assertEquals(soma,valorTotal,0); //Range para cálculos de precisão numérica
 	}
 	
